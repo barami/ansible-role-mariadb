@@ -1,4 +1,5 @@
 ---
 # defaults file for ansible-role-mariadb
 mariadb_repo: ''
+mariadb_repo_key: ''
 mariadb_package: 'mariadb-server'
