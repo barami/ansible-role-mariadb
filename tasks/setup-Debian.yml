@@ -1,5 +1,5 @@
 ---
-- name: APT 키 추가
+- name: MariaDB APT 키 추가
   apt_key:
     url: '{{ mariadb_repo_key }}'
     state: present
@@ -7,7 +7,7 @@
     - mariadb_repo_key|length > 0
     - mariadb_repo|length > 0
 
-- name: 저장소 추가
+- name: MariaDB 저장소 추가
   apt_repository:
     repo: '{{ mariadb_repo }}'
     state: present
@@ -18,3 +18,9 @@
   apt:
     name: '{{ mariadb_package }}'
     state: present
+
+- name: MariaDB 서비스 구동
+  service:
+    name: mariadb
+    state: started
+    enabled: yes
