@@ -1,7 +1,7 @@
 ---
 - name: APT 키 추가
   apt_key:
-    url: mariadb_repo_key
+    url: '{{ mariadb_repo_key }}'
     state: present
   when:
     - mariadb_repo_key|length > 0
@@ -9,12 +9,12 @@
 
 - name: 저장소 추가
   apt_repository:
-    repo: mariadb_repo
+    repo: '{{ mariadb_repo }}'
     state: present
     filename: mariadb
   when: mariadb_repo|length > 0
 
 - name: MariaDB 패키지 설치
   apt:
-    name: mariadb_package
+    name: '{{ mariadb_package }}'
     state: present
