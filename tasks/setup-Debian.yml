@@ -1,0 +1,12 @@
+---
+- name: 저장소 추가
+  apt_repository:
+    repo: mariadb_repo
+    state: present
+    filename: mariadb
+  when: mariadb_repo|length > 0
+
+- name: MariaDB 패키지 설치
+  apt:
+    name: mariadb_package
+    state: present
